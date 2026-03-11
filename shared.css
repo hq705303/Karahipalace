@@ -1,0 +1,130 @@
+/* ==========================================
+   KARAHI PALACE – SHARED STYLES
+   Black & Gold Luxury Theme | Fully Responsive
+   ========================================== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#D4AF37;--gold-lt:#F0D060;--gold-dk:#A8862A;
+  --black:#080808;--dark:#111;--card-bg:#0d0d0d;
+  --border:rgba(212,175,55,.15);--border-hv:rgba(212,175,55,.45);
+  --text:rgba(255,255,255,.85);--text-muted:rgba(255,255,255,.45);--text-dim:rgba(255,255,255,.22);
+  --nav-h:72px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Outfit',sans-serif;background:var(--black);color:var(--text);overflow-x:hidden;line-height:1.6}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.45}
+img{max-width:100%;display:block}
+
+/* ── NAVBAR ── */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:var(--nav-h);background:rgba(8,8,8,.95);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);transition:background .4s,border-color .4s}
+.navbar.solid{background:rgba(8,8,8,1);border-color:rgba(212,175,55,.28)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:800;color:var(--gold);text-decoration:none;letter-spacing:.02em;flex-shrink:0;line-height:1}
+.nav-logo em{font-style:italic;color:#fff}
+.nav-links{display:flex;list-style:none;align-items:center;gap:1.5rem}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;position:relative;transition:color .3s;font-family:'Outfit',sans-serif;white-space:nowrap}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .35s cubic-bezier(.4,0,.2,1)}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-order-btn{background:var(--gold)!important;color:#000!important;padding:.42rem 1.1rem!important;font-weight:700!important;transition:background .3s!important}
+.nav-order-btn:hover{background:var(--gold-lt)!important}
+.nav-order-btn::after{display:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:1100}
+.hamburger span{width:24px;height:1.5px;background:#fff;display:block;transition:transform .3s,opacity .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* Mobile Nav */
+.mobile-nav{display:none;position:fixed;inset:0;top:var(--nav-h);background:rgba(8,8,8,.99);z-index:998;flex-direction:column;align-items:stretch;justify-content:flex-start;overflow-y:auto}
+.mobile-nav.open{display:flex}
+.mobile-nav ul{list-style:none;text-align:center;width:100%;padding:1rem 0 2rem}
+.mobile-nav ul li{border-bottom:1px solid rgba(212,175,55,.07)}
+.mobile-nav ul li:first-child{border-top:1px solid rgba(212,175,55,.07)}
+.mobile-nav ul a{display:block;padding:1rem 2rem;font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:600;color:#fff;text-decoration:none;transition:color .3s,background .3s}
+.mobile-nav ul a:hover{color:var(--gold);background:rgba(212,175,55,.04)}
+.mobile-order{background:var(--gold)!important;color:#000!important;margin:.5rem 1.5rem!important;display:block!important;text-align:center;padding:.9rem 1rem!important;font-family:'Outfit',sans-serif!important;font-size:.8rem!important;font-weight:700!important;letter-spacing:.12em!important;text-transform:uppercase!important;border-bottom:none!important}
+
+/* ── BUTTONS ── */
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;background:var(--gold);color:#000;padding:.8rem 1.9rem;font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-family:'Outfit',sans-serif;text-decoration:none;border:none;cursor:pointer;transition:background .3s,transform .25s;white-space:nowrap}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.btn-outline-gold{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;background:transparent;color:var(--gold);padding:.8rem 1.9rem;font-size:.76rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-family:'Outfit',sans-serif;text-decoration:none;border:1px solid var(--gold);cursor:pointer;transition:background .3s,color .3s,transform .25s;white-space:nowrap}
+.btn-outline-gold:hover{background:var(--gold);color:#000;transform:translateY(-2px)}
+.btn-black{display:inline-flex;align-items:center;justify-content:center;background:#000;color:var(--gold);padding:.8rem 1.9rem;font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-family:'Outfit',sans-serif;text-decoration:none;border:1px solid rgba(212,175,55,.25);cursor:pointer;transition:background .3s,border-color .3s;white-space:nowrap}
+.btn-black:hover{background:#111;border-color:var(--gold)}
+
+/* ── SECTION COMMONS ── */
+.section-header{text-align:center;margin-bottom:3rem}
+.eyebrow-center{display:block;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:500;margin-bottom:.65rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.9rem);font-weight:800;color:#fff;margin-bottom:.8rem;line-height:1.15}
+.section-sub{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--text-muted);max-width:540px;margin:.6rem auto 0;line-height:1.75;font-weight:300}
+.gold-divider{display:flex;align-items:center;justify-content:center;gap:.8rem;margin:.8rem 0}
+.gold-divider span{width:42px;height:1px;background:var(--gold);opacity:.4}
+.gold-divider i{color:var(--gold);font-size:.85rem}
+
+/* ── PAGE HERO (inner pages) ── */
+.page-hero{position:relative;height:320px;display:flex;align-items:center;margin-top:var(--nav-h);overflow:hidden}
+.page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.28)}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.88) 0%,rgba(0,0,0,.25) 100%)}
+.page-hero-content{position:relative;z-index:2;padding:0 5%}
+.page-hero-content .eyebrow-center{text-align:left;display:block;margin-bottom:.5rem}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,5vw,3.5rem);font-weight:800;color:#fff;line-height:1.1}
+.page-hero h1 em{color:var(--gold);font-style:italic}
+.page-breadcrumb{display:flex;align-items:center;gap:.5rem;margin-top:.7rem;font-size:.7rem;color:var(--text-dim);font-family:'Outfit',sans-serif;flex-wrap:wrap}
+.page-breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color .3s}
+.page-breadcrumb a:hover{color:var(--gold)}
+
+/* ── FOOTER ── */
+.footer{background:#050505;border-top:1px solid var(--border);padding:4rem 5% 0}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1.2fr 1.5fr;gap:2.5rem;max-width:1300px;margin:0 auto;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+.footer-brand p{font-size:.8rem;color:var(--text-muted);line-height:1.85;margin-top:.8rem;max-width:270px;font-family:'Outfit',sans-serif;font-weight:300}
+.footer-social{display:flex;gap:.6rem;margin-top:1.2rem;flex-wrap:wrap}
+.social-icon{width:34px;height:34px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:.85rem;text-decoration:none;transition:border-color .3s,color .3s}
+.social-icon:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col h4{font-family:'Playfair Display',serif;font-size:.88rem;color:#fff;margin-bottom:1rem;font-weight:700;letter-spacing:.04em}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.5rem}
+.footer-col ul a{font-size:.78rem;color:var(--text-muted);text-decoration:none;transition:color .3s;font-family:'Outfit',sans-serif;font-weight:300}
+.footer-col ul a:hover{color:var(--gold)}
+.footer-contact-text{font-size:.78rem;color:var(--text-muted);line-height:1.9;font-family:'Outfit',sans-serif;font-weight:300}
+.footer-bottom{max-width:1300px;margin:0 auto;padding:1.2rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.footer-bottom p{font-size:.68rem;color:var(--text-dim);font-family:'Outfit',sans-serif}
+.footer-bottom a{color:var(--text-muted);text-decoration:none;transition:color .3s}
+.footer-bottom a:hover{color:var(--gold)}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1100px){
+  .nav-links{gap:1.1rem}
+  .nav-links a{font-size:.68rem}
+}
+@media(max-width:900px){
+  .footer-inner{grid-template-columns:1fr 1fr;gap:2rem}
+  .page-hero{height:270px}
+}
+@media(max-width:768px){
+  :root{--nav-h:62px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .footer-inner{grid-template-columns:1fr;gap:1.8rem;padding-bottom:2rem}
+  .footer-brand p{max-width:100%}
+  .footer-bottom{flex-direction:column;text-align:center;gap:.5rem}
+  .page-hero{height:220px}
+  .section-title{font-size:clamp(1.5rem,6vw,2.1rem)}
+  .btn-gold,.btn-outline-gold,.btn-black{padding:.72rem 1.4rem;font-size:.72rem}
+}
+@media(max-width:480px){
+  :root{--nav-h:58px}
+  .navbar{padding:0 4%}
+  .nav-logo{font-size:1.15rem}
+  .footer{padding:2.5rem 4% 0}
+  .page-hero{height:190px}
+  .page-hero h1{font-size:1.5rem}
+}
+
+/* Logo image in navbar and footer */
+.nav-logo{display:flex!important;align-items:center!important;gap:6px!important}
+.nav-logo img{height:40px;width:40px;object-fit:contain;flex-shrink:0;display:block}

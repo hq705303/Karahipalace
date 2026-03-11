@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="logo.png"/>
+<title>Contact Us | Karahi Palace | Laurel, MD</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.contact-hero-bg{background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1800&q=80')}
+
+/* ── Layout ── */
+.contact-wrap{padding:5rem 5%;background:var(--black)}
+.contact-layout{display:grid;grid-template-columns:1fr 1.35fr;gap:3rem;align-items:start;max-width:1200px;margin:0 auto}
+
+/* ── Info column ── */
+.contact-eyebrow{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;margin-bottom:.8rem;display:block}
+.contact-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.2rem);font-weight:800;color:#fff;line-height:1.2;margin-bottom:.4rem}
+.contact-title em{color:var(--gold);font-style:italic}
+.contact-sub{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text-muted);font-style:italic;margin-bottom:2rem;line-height:1.65}
+
+.c-card{background:var(--card-bg);border:1px solid rgba(212,175,55,.1);padding:1.3rem 1.5rem;margin-bottom:.85rem;display:flex;align-items:flex-start;gap:1.1rem;transition:border-color .3s}
+.c-card:hover{border-color:rgba(212,175,55,.32)}
+.c-card-icon{font-size:1.45rem;flex-shrink:0;margin-top:.05rem}
+.c-card-label{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;margin-bottom:.3rem;display:block}
+.c-card-val{font-family:'Outfit',sans-serif;font-size:.88rem;color:#fff;font-weight:500;line-height:1.6}
+.c-card-val a{color:#fff;text-decoration:none;transition:color .3s}
+.c-card-val a:hover{color:var(--gold)}
+.c-card-note{font-size:.71rem;color:var(--text-muted);font-family:'Outfit',sans-serif;font-weight:300;margin-top:.18rem}
+
+.timings-box{background:rgba(212,175,55,.04);border:1px solid rgba(212,175,55,.18);padding:1.6rem;margin-top:1.2rem}
+.timings-box-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;margin-bottom:1rem;display:block}
+.timings-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(212,175,55,.07)}
+.timings-row:last-child{border-bottom:none;padding-bottom:0}
+.t-day{font-family:'Outfit',sans-serif;font-size:.8rem;color:rgba(255,255,255,.55);font-weight:300}
+.t-time{font-family:'Playfair Display',serif;font-size:.92rem;color:var(--gold);font-weight:700}
+.timings-note{font-size:.7rem;color:var(--text-muted);font-family:'Outfit',sans-serif;font-style:italic;margin-top:.9rem;line-height:1.55}
+
+/* ── Form column ── */
+.form-box{background:var(--card-bg);border:1px solid rgba(212,175,55,.12);padding:2.5rem}
+.form-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:.35rem}
+.form-sub{font-size:.77rem;color:var(--text-muted);font-family:'Outfit',sans-serif;margin-bottom:2rem;line-height:1.5}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1rem}
+.fg label{display:block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:600;margin-bottom:.42rem}
+.fg input,.fg textarea,.fg select{width:100%;background:#111;border:1px solid rgba(212,175,55,.13);color:#fff;padding:.75rem 1rem;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:300;outline:none;transition:border-color .3s;box-sizing:border-box;-webkit-appearance:none;border-radius:0}
+.fg select{cursor:pointer}
+.fg select option{background:#111;color:#fff}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2)}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:rgba(212,175,55,.48)}
+.fg textarea{resize:vertical;min-height:110px}
+.form-btn{width:100%;background:var(--gold);color:#000;border:none;padding:1rem 2rem;font-family:'Outfit',sans-serif;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .3s,transform .2s;margin-top:.4rem}
+.form-btn:hover{background:#e5c848;transform:translateY(-2px)}
+.form-success{display:none;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.28);padding:1.3rem;text-align:center;margin-top:1rem}
+.form-success p{font-family:'Outfit',sans-serif;font-size:.83rem;color:var(--gold)}
+
+/* ── Map ── */
+.map-section{background:#0a0a0a;border-top:1px solid var(--border);padding:4.5rem 5%}
+.map-inner{max-width:1200px;margin:0 auto}
+.map-header{text-align:center;margin-bottom:2.5rem}
+.map-eyebrow{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;display:block;margin-bottom:.6rem}
+.map-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;color:#fff}
+.map-title em{color:var(--gold);font-style:italic}
+.map-embed{width:100%;height:380px;border:1px solid rgba(212,175,55,.12);filter:grayscale(.25) brightness(.85);display:block}
+.map-cta{text-align:center;margin-top:1.5rem}
+
+/* ── Social ── */
+.social-strip{background:var(--black);border-top:1px solid var(--border);padding:2.8rem 5%;text-align:center}
+.social-strip p{font-size:.78rem;color:var(--text-muted);font-family:'Outfit',sans-serif;margin-bottom:1.3rem}
+.social-row{display:flex;justify-content:center;gap:.85rem}
+.s-link{width:44px;height:44px;border:1px solid rgba(212,175,55,.18);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:.88rem;text-decoration:none;transition:all .3s;font-family:'Outfit',sans-serif}
+.s-link:hover{border-color:var(--gold);color:var(--gold);background:rgba(212,175,55,.06)}
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .contact-layout{grid-template-columns:1fr}
+  .form-box{padding:2rem}
+}
+@media(max-width:768px){
+  .contact-wrap{padding:3rem 4%}
+  .map-section{padding:3rem 4%}
+  .social-strip{padding:2.5rem 4%}
+  .form-box{padding:1.6rem}
+  .form-row-2{grid-template-columns:1fr}
+  .timings-box{padding:1.3rem}
+  .c-card{padding:1.1rem 1.2rem}
+}
+@media(max-width:480px){
+  .contact-wrap{padding:2.5rem 4%}
+  .form-title{font-size:1.1rem}
+  .map-embed{height:260px}
+  .contact-title{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:0;"><img src="logo.png" alt="Karahi Palace Logo" style="height:42px;width:42px;object-fit:contain;flex-shrink:0;margin-right:2px;">Karahi <em>Palace</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li><li><a href="locations.html">Locations</a></li>
+    <li><a href="catering.html">Catering</a></li><li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="order.html" class="nav-order-btn">Order Online</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav"><ul>
+  <li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li>
+  <li><a href="about.html">About</a></li><li><a href="locations.html">Locations</a></li>
+  <li><a href="catering.html">Catering</a></li><li><a href="gallery.html">Gallery</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  <li><a href="order.html" class="mobile-order">Order Online</a></li>
+</ul></div>
+
+<div class="page-hero">
+  <div class="page-hero-bg contact-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="eyebrow-center">We'd Love to Hear From You</span>
+    <h1>Contact <em>Us</em></h1>
+    <nav class="page-breadcrumb"><a href="index.html">Home</a><span>›</span><span>Contact</span></nav>
+  </div>
+</div>
+
+<!-- MAIN CONTACT SECTION -->
+<section class="contact-wrap">
+<div class="contact-layout">
+
+  <!-- LEFT: Contact Info -->
+  <div class="reveal">
+    <span class="contact-eyebrow">Get in Touch</span>
+    <h2 class="contact-title">Visit or <em>Reach Out</em></h2>
+    <p class="contact-sub">Open 7 days a week — happy to help with reservations, catering enquiries, or any questions about our menu.</p>
+
+    <div class="c-card">
+      <span class="c-card-icon">📍</span>
+      <div>
+        <span class="c-card-label">Address</span>
+        <div class="c-card-val">3507 Fort Meade Road<br/>Laurel, MD 20724</div>
+        <div class="c-card-note"><a href="https://maps.google.com/?q=3507+Fort+Meade+Rd+Laurel+MD+20724" target="_blank" style="color:var(--gold);text-decoration:none">Get Directions →</a></div>
+      </div>
+    </div>
+
+    <div class="c-card">
+      <span class="c-card-icon">📞</span>
+      <div>
+        <span class="c-card-label">Phone</span>
+        <div class="c-card-val"><a href="tel:+13017761234">123-456-789</a></div>
+        <div class="c-card-note">Please call ahead for specialty orders</div>
+      </div>
+    </div>
+
+    <div class="c-card">
+      <span class="c-card-icon">✉️</span>
+      <div>
+        <span class="c-card-label">Email</span>
+        <div class="c-card-val"><a href="mailto:info@karahipalace.us">info@karahipalace.us</a></div>
+        <div class="c-card-note">General enquiries</div>
+      </div>
+    </div>
+
+    <div class="c-card">
+      <span class="c-card-icon">🍽️</span>
+      <div>
+        <span class="c-card-label">Catering Enquiries</span>
+        <div class="c-card-val"><a href="mailto:info@karahipalace.us">info@karahipalace.us</a></div>
+        <div class="c-card-note">Events, corporate orders & large gatherings</div>
+      </div>
+    </div>
+
+    <div class="timings-box reveal">
+      <span class="timings-box-label">🕐 Opening Hours</span>
+      <div class="timings-row">
+        <span class="t-day">Monday – Sunday</span>
+        <span class="t-time">11 AM – 11 PM</span>
+      </div>
+      <div class="timings-row">
+        <span class="t-day">7 Days A Week</span>
+        <span class="t-time" style="font-size:.72rem;color:rgba(212,175,55,.55)">No Holidays</span>
+      </div>
+      <p class="timings-note">Please call ahead for specialty orders and large groups.</p>
+    </div>
+  </div>
+
+  <!-- RIGHT: Direct Contact Info Panel -->
+  <div class="reveal reveal-d1">
+
+    <!-- Call CTA Box -->
+    <div style="background:rgba(212,175,55,.04);border:1px solid rgba(212,175,55,.28);padding:2.5rem 2rem;text-align:center;margin-bottom:1rem;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-40px;right:-40px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.07) 0%,transparent 70%);pointer-events:none"></div>
+      <span style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;display:block;margin-bottom:.75rem">📞 Give Us a Call</span>
+      <a href="tel:123456789" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:#fff;text-decoration:none;display:block;margin-bottom:.4rem;transition:color .3s" onmouseover="this.style.color='#D4AF37'" onmouseout="this.style.color='#fff'">123-456-789</a>
+      <div style="font-family:'Outfit',sans-serif;font-size:.75rem;color:rgba(255,255,255,.38);letter-spacing:.06em;margin-bottom:1rem">Open Daily · 11:00 AM – 11:00 PM</div>
+      <div style="width:44px;height:1px;background:rgba(212,175,55,.3);margin:0 auto .9rem"></div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:.95rem;color:rgba(255,255,255,.48);font-style:italic;line-height:1.65">The fastest way to reach us for orders, reservations, and catering inquiries.</p>
+    </div>
+
+    <!-- Email card -->
+    <div style="background:var(--card-bg);border:1px solid rgba(212,175,55,.12);padding:1.4rem 1.6rem;display:flex;align-items:center;gap:1rem;margin-bottom:1rem;transition:border-color .3s" onmouseover="this.style.borderColor='rgba(212,175,55,.35)'" onmouseout="this.style.borderColor='rgba(212,175,55,.12)'">
+      <span style="font-size:1.4rem;flex-shrink:0">✉️</span>
+      <div>
+        <span style="font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;display:block;margin-bottom:.22rem">Email Us</span>
+        <a href="mailto:info@karahipalace.us" style="font-family:'Outfit',sans-serif;font-size:.88rem;color:#fff;font-weight:500;text-decoration:none;transition:color .3s" onmouseover="this.style.color='#D4AF37'" onmouseout="this.style.color='#fff'">info@karahipalace.us</a>
+        <div style="font-size:.68rem;color:var(--text-muted);font-family:'Outfit',sans-serif;margin-top:.15rem">General enquiries &amp; feedback</div>
+      </div>
+    </div>
+
+    <!-- Catering email card -->
+    <div style="background:var(--card-bg);border:1px solid rgba(212,175,55,.12);padding:1.4rem 1.6rem;display:flex;align-items:center;gap:1rem;margin-bottom:1rem;transition:border-color .3s" onmouseover="this.style.borderColor='rgba(212,175,55,.35)'" onmouseout="this.style.borderColor='rgba(212,175,55,.12)'">
+      <span style="font-size:1.4rem;flex-shrink:0">🍽️</span>
+      <div>
+        <span style="font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;display:block;margin-bottom:.22rem">Catering Enquiries</span>
+        <a href="mailto:info@karahipalace.us" style="font-family:'Outfit',sans-serif;font-size:.88rem;color:#fff;font-weight:500;text-decoration:none;transition:color .3s" onmouseover="this.style.color='#D4AF37'" onmouseout="this.style.color='#fff'">info@karahipalace.us</a>
+        <div style="font-size:.68rem;color:var(--text-muted);font-family:'Outfit',sans-serif;margin-top:.15rem">Events, weddings &amp; large orders</div>
+      </div>
+    </div>
+
+    <!-- How to reach us note -->
+    <div style="background:var(--card-bg);border:1px solid rgba(212,175,55,.08);padding:1.6rem;margin-bottom:1rem">
+      <span style="font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;display:block;margin-bottom:1rem">💬 What to Expect</span>
+      <div style="display:flex;flex-direction:column;gap:.75rem">
+        <div style="display:flex;align-items:flex-start;gap:.75rem">
+          <span style="color:var(--gold);font-size:.85rem;flex-shrink:0;margin-top:1px">✓</span>
+          <span style="font-family:'Outfit',sans-serif;font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.55">For general questions, give us a call or drop us an email — we aim to respond promptly.</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:.75rem">
+          <span style="color:var(--gold);font-size:.85rem;flex-shrink:0;margin-top:1px">✓</span>
+          <span style="font-family:'Outfit',sans-serif;font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.55">For specialty orders, please call ahead so we can prepare your meal fresh with full attention.</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:.75rem">
+          <span style="color:var(--gold);font-size:.85rem;flex-shrink:0;margin-top:1px">✓</span>
+          <span style="font-family:'Outfit',sans-serif;font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.55">For catering inquiries, email our catering team with your event details and we'll build a custom package for you.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA buttons -->
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap">
+      <!-- <a href="tel:123456789" class="btn-gold" style="flex:1;text-align:center;min-width:140px">📞 Call Now</a> -->
+      <a href="catering.html" class="btn-outline-gold" style="flex:1;text-align:center;min-width:140px">Catering Info →</a>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<!-- MAP SECTION -->
+<section class="map-section">
+  <div class="map-inner">
+    <div class="map-header">
+      <span class="map-eyebrow">Find Us</span>
+      <h2 class="map-title">Our <em>Location</em></h2>
+    </div>
+    <iframe
+      class="map-embed"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3104.1234!2d-76.8590!3d39.0870!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7e0e0e0e0e0e0%3A0x0!2s3507+Fort+Meade+Rd%2C+Laurel%2C+MD+20724!5e0!3m2!1sen!2sus!4v1234567890"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Karahi Palace Location">
+    </iframe>
+    <div class="map-cta">
+      <a href="https://maps.google.com/?q=3507+Fort+Meade+Rd+Laurel+MD+20724" target="_blank" class="btn-gold">📍 Open in Google Maps →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL STRIP -->
+<section class="social-strip">
+  <p>Follow us on social media for daily specials, behind-the-scenes and more</p>
+  <div class="social-row">
+    <a href="#" class="s-link">f</a>
+    <a href="#" class="s-link">𝕏</a>
+    <a href="#" class="s-link">in</a>
+    <a href="#" class="s-link">📷</a>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="shared.js"></script>
+</body>
+</html>

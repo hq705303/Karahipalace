@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="logo.png"/>
+<title>Order Online | Karahi Palace | Laurel, MD</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.order-hero-bg{background-image:url('https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=1800&q=80')}
+
+.order-section{padding:6rem 5%;background:var(--black);min-height:70vh;display:flex;align-items:center}
+.order-inner{max-width:860px;margin:0 auto;text-align:center}
+
+.order-icon-ring{
+  width:110px;height:110px;border-radius:50%;
+  background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.6rem;margin:0 auto 2.5rem;
+  animation:breathe 4s ease-in-out infinite;
+}
+@keyframes breathe{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(212,175,55,.0)}50%{transform:scale(1.05);box-shadow:0 0 0 18px rgba(212,175,55,.06)}}
+
+.order-label{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;display:block;margin-bottom:1rem}
+
+.order-heading{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:.8rem}
+.order-heading em{color:var(--gold);font-style:italic;display:block}
+
+.order-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,2vw,1.25rem);color:rgba(255,255,255,.55);line-height:1.85;max-width:560px;margin:0 auto 3.5rem;font-weight:300}
+
+/* Big phone card */
+.order-contact-card{
+  background:rgba(212,175,55,.04);
+  border:1px solid rgba(212,175,55,.28);
+  padding:3rem 2.5rem;
+  max-width:520px;margin:0 auto 2rem;
+  position:relative;overflow:hidden;
+}
+.order-contact-card::before{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,55,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.order-contact-card::after{
+  content:'';position:absolute;bottom:-60px;left:-60px;
+  width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,55,.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.oc-tag{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;margin-bottom:1.1rem;display:block}
+.oc-phone{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.2rem);font-weight:800;color:#fff;letter-spacing:.02em;display:block;margin-bottom:.5rem;text-decoration:none;transition:color .3s}
+.oc-phone:hover{color:var(--gold)}
+.oc-hours{font-family:'Outfit',sans-serif;font-size:.8rem;color:rgba(255,255,255,.38);letter-spacing:.06em}
+.oc-divider{width:50px;height:1px;background:rgba(212,175,55,.25);margin:1.4rem auto}
+.oc-note{font-family:'Cormorant Garamond',serif;font-size:.98rem;color:rgba(255,255,255,.45);font-style:italic;line-height:1.6}
+
+/* Info row */
+.order-info-row{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem}
+.order-info-pill{background:var(--card-bg);border:1px solid rgba(212,175,55,.12);padding:.75rem 1.5rem;display:flex;align-items:center;gap:.6rem;font-family:'Outfit',sans-serif;font-size:.78rem;color:rgba(255,255,255,.55)}
+.order-info-pill span{color:var(--gold);font-size:1rem}
+
+/* Divider line */
+.order-divider-line{display:flex;align-items:center;gap:1rem;max-width:500px;margin:3rem auto;opacity:.3}
+.order-divider-line::before,.order-divider-line::after{content:'';flex:1;height:1px;background:var(--gold)}
+.order-divider-line i{color:var(--gold);font-style:normal;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;white-space:nowrap}
+
+/* Email card */
+.order-email-card{background:var(--card-bg);border:1px solid rgba(212,175,55,.1);padding:1.8rem 2rem;max-width:520px;margin:0 auto;display:flex;align-items:center;gap:1.2rem;text-align:left;transition:border-color .3s}
+.order-email-card:hover{border-color:rgba(212,175,55,.3)}
+.oe-icon{font-size:1.6rem;flex-shrink:0}
+.oe-label{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;display:block;margin-bottom:.25rem}
+.oe-val{font-family:'Outfit',sans-serif;font-size:.9rem;color:#fff;font-weight:500}
+.oe-val a{color:#fff;text-decoration:none;transition:color .3s}
+.oe-val a:hover{color:var(--gold)}
+
+@media(max-width:600px){
+  .order-contact-card{padding:2rem 1.4rem}
+  .order-info-row{gap:.7rem}
+  .order-info-pill{font-size:.7rem;padding:.6rem 1rem}
+  .order-email-card{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:0;"><img src="logo.png" alt="Karahi Palace Logo" style="height:42px;width:42px;object-fit:contain;flex-shrink:0;margin-right:2px;">Karahi <em>Palace</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="locations.html">Locations</a></li>
+    <li><a href="catering.html">Catering</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="order.html" class="nav-order-btn active">Order Online</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav"><ul>
+  <li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li>
+  <li><a href="about.html">About</a></li><li><a href="locations.html">Locations</a></li>
+  <li><a href="catering.html">Catering</a></li><li><a href="gallery.html">Gallery</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  <li><a href="order.html" class="mobile-order">Order Online</a></li>
+</ul></div>
+
+<div class="page-hero">
+  <div class="page-hero-bg order-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="eyebrow-center">Authentic Pakistani Cuisine</span>
+    <h1>Order <em>Online</em></h1>
+    <nav class="page-breadcrumb"><a href="index.html">Home</a><span>›</span><span>Order Online</span></nav>
+  </div>
+</div>
+
+<section class="order-section">
+  <div class="order-inner reveal">
+
+    <div class="order-icon-ring">📞</div>
+
+    <span class="order-label">Place Your Order</span>
+    <h2 class="order-heading">For Order!<em>Please Contact Us At</em></h2>
+    <p class="order-sub">We're ready to take your order. Give us a call and our team will prepare your authentic Pakistani meal fresh to order.</p>
+
+    <div class="order-contact-card reveal">
+      <span class="oc-tag">📞 Call to Order</span>
+      <a href="tel:123456789" class="oc-phone">123-456-789</a>
+      <div class="oc-hours">Open Daily · 11:00 AM – 11:00 PM</div>
+      <div class="oc-divider"></div>
+      <p class="oc-note">Please call ahead for specialty items and large orders — quality is never rushed.</p>
+    </div>
+
+    <div class="order-divider-line"><i>or reach us by email</i></div>
+
+    <div class="order-email-card reveal">
+      <span class="oe-icon">✉️</span>
+      <div>
+        <span class="oe-label">Email</span>
+        <div class="oe-val"><a href="mailto:info@karahipalace.us">info@karahipalace.us</a></div>
+      </div>
+    </div>
+
+    <div class="order-info-row">
+      <div class="order-info-pill"><span>🌙</span> 100% Halal Certified</div>
+      <div class="order-info-pill"><span>🔥</span> Made to Order</div>
+      <div class="order-info-pill"><span>🍽️</span> Dine-In & Carryout</div>
+      <div class="order-info-pill"><span>📍</span> Laurel, MD</div>
+    </div>
+
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="shared.js"></script>
+</body>
+</html>

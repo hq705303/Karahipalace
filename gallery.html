@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="logo.png"/>
+<title>Gallery | Karahi Palace | Authentic Pakistani Cuisine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.gal-hero-bg{background-image:url('https://images.unsplash.com/photo-1574484284002-952d92456975?w=1800&q=80')}
+
+/* Filter bar */
+.filter-bar{background:#0d0d0d;border-bottom:1px solid var(--border);padding:.9rem 5%;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;position:sticky;top:var(--nav-h);z-index:99}
+.filter-btn{background:transparent;border:1px solid rgba(212,175,55,.2);color:var(--text-muted);padding:.4rem 1.2rem;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:500;transition:all .3s;white-space:nowrap}
+.filter-btn.active,.filter-btn:hover{background:var(--gold);border-color:var(--gold);color:#000}
+
+/* Gallery grid */
+.gallery-section{padding:3.5rem 5%;background:var(--black)}
+.gallery-grid{
+  columns:3 280px;
+  column-gap:12px;
+  orphans:1; widows:1;
+}
+.gal-item{
+  break-inside:avoid;
+  margin-bottom:12px;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  border:1px solid rgba(212,175,55,.07);
+  transition:border-color .3s;
+}
+.gal-item:hover{border-color:rgba(212,175,55,.38)}
+.gal-item img{
+  width:100%;
+  display:block;
+  transition:transform .55s;
+}
+.gal-item:hover img{transform:scale(1.06)}
+.gal-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.88) 0%,transparent 55%);
+  opacity:0;transition:opacity .35s;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem;
+}
+.gal-item:hover .gal-overlay{opacity:1}
+.gal-name{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.25rem}
+.gal-cat{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif}
+.gal-gold-border{position:absolute;inset:0;border:2px solid var(--gold);opacity:0;transition:opacity .35s;pointer-events:none}
+.gal-item:hover .gal-gold-border{opacity:.35}
+
+/* CTA */
+.gal-cta{background:var(--gold);padding:4rem 5%;text-align:center}
+.gal-cta h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;color:#000;margin-bottom:.8rem}
+.gal-cta p{font-size:.92rem;color:rgba(0,0,0,.7);font-family:'Outfit',sans-serif;margin-bottom:2rem;line-height:1.7}
+.gal-cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:10000;align-items:center;justify-content:center;padding:1.5rem}
+.lightbox.open{display:flex}
+.lb-inner{position:relative;max-width:900px;max-height:90vh;width:100%}
+.lb-inner img{width:100%;max-height:80vh;object-fit:contain;display:block;border:1px solid rgba(212,175,55,.25)}
+.lb-close{position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;line-height:1;padding:.3rem}
+.lb-close:hover{color:var(--gold)}
+.lb-info{padding:1rem 0 .3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.lb-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#fff}
+.lb-cat{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.6);border:1px solid rgba(212,175,55,.3);color:#fff;font-size:1.5rem;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,border-color .3s}
+.lb-prev{left:-54px}.lb-next{right:-54px}
+.lb-prev:hover,.lb-next:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+@media(max-width:1050px){.lb-prev{left:0}.lb-next{right:0}}
+@media(max-width:768px){
+  .gallery-section{padding:2.5rem 4%}
+  .gallery-grid{columns:2 180px;column-gap:8px}
+  .gallery-grid .gal-item{margin-bottom:8px}
+  .filter-bar{padding:.7rem 4%;gap:.4rem}
+  .filter-btn{padding:.35rem .9rem;font-size:.62rem}
+  .gal-cta{padding:3rem 4%}
+  .gal-cta-btns{flex-direction:column;align-items:center}
+}
+@media(max-width:480px){
+  .gallery-grid{columns:1;column-gap:0}
+  .filter-bar{gap:.3rem}
+}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:0;"><img src="logo.png" alt="Karahi Palace Logo" style="height:42px;width:42px;object-fit:contain;flex-shrink:0;margin-right:2px;">Karahi <em>Palace</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li><li><a href="locations.html">Locations</a></li>
+    <li><a href="catering.html">Catering</a></li>
+    <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="order.html" class="nav-order-btn">Order Online</a></li> 
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav"><ul>
+  <li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li>
+  <li><a href="about.html">About</a></li><li><a href="locations.html">Locations</a></li>
+  <li><a href="catering.html">Catering</a></li><li><a href="gallery.html">Gallery</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  <li><a href="order.html" class="mobile-order">Order Online</a></li>
+</ul></div>
+
+<div class="page-hero">
+  <div class="page-hero-bg gal-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="eyebrow-center">Authentic Pakistani Cuisine</span>
+    <h1>Food <em>Gallery</em></h1>
+    <nav class="page-breadcrumb"><a href="index.html">Home</a><span>›</span><span>Gallery</span></nav>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">All Photos</button>
+  <button class="filter-btn" data-filter="karahi">Karahi</button>
+  <button class="filter-btn" data-filter="grill">Grill & Kabobs</button>
+  <button class="filter-btn" data-filter="rice">Rice & Biryani</button>
+  <button class="filter-btn" data-filter="starters">Starters</button>
+  <button class="filter-btn" data-filter="desserts">Desserts</button>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<!-- CTA -->
+<div class="gal-cta">
+  <h2>Hungry?</h2>
+  <p>All dishes are made fresh to order with 100% certified Halal ingredients.<br/>Open every day 11:00 AM – 10:00 PM · 3507 Fort Meade Rd, Laurel MD</p>
+  <div class="gal-cta-btns">
+    <!-- <a href="#" class="btn-black">Order Online</a> -->
+    <a href="menu.html" class="btn-black">View Full Menu</a>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-inner">
+    <button class="lb-close" id="lbClose">&#215;</button>
+    <button class="lb-prev" id="lbPrev">&#8249;</button>
+    <button class="lb-next" id="lbNext">&#8250;</button>
+    <img id="lbImg" src="" alt=""/>
+    <div class="lb-info">
+      <span class="lb-name" id="lbName"></span>
+      <span class="lb-cat" id="lbCat"></span>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+const photos = [
+  // KARAHI
+  {name:'Chicken Karahi',         cat:'karahi',   img:'chickenkarahi.jpg'},
+  {name:'Lamb Karahi',            cat:'karahi',   img:'lambkarahi.jpg'},
+  {name:'Goat Karahi',            cat:'karahi',   img:'goatkarahi.jpg'},
+  {name:'Boneless Chicken Karahi',cat:'karahi',   img:'boneless.jpg'},
+  {name:'Beef Kabob Karahi',      cat:'karahi',   img:'beefkababkarahi.jpg'},
+  // GRILL
+  {name:'Chicken Boti Kabob',     cat:'grill',    img:'chickenbotikabab.jpg'},
+  {name:'Lamb Chops',             cat:'grill',    img:'lambchops1.jpg'},
+  {name:'Chicken Seekh Kabob',    cat:'grill',    img:'chickenseekhkabab.jpg'},
+  {name:'Chicken Tikka With Bone',cat:'grill',    img:'chickentikkawithbone.jpg'},
+  {name:'Lamb Kabob',             cat:'grill',    img:'lambkabab.jpg'},
+  {name:'Beef Seekh Kabob',       cat:'grill',    img:'beefseekhkabab.jpg'},
+  {name:'Fried Fish',             cat:'grill',    img:'friedfish.jpg'},
+  // RICE
+  {name:'Chicken Biryani',        cat:'rice',     img:'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=700&q=85'},
+  {name:'Mutton Biryani',         cat:'rice',     img:'muttonbiryani.jpg'},
+  // STARTERS
+  {name:'Vegetable Samosa',       cat:'starters', img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=700&q=85'},
+  {name:'Chat Samosa',            cat:'starters', img:'chatsamosa.jpg'},
+  // DESSERTS
+  {name:'Gulab Jamun',            cat:'desserts', img:'gulabjamun.jpg'},
+  {name:'Kheer (Rice Pudding)',   cat:'desserts', img:'kheer.jpg'},
+  {name:'Ras Malai',              cat:'desserts', img:'rasmalai.jpg'},
+  {name:'Kulfi',                  cat:'desserts', img:'https://images.unsplash.com/photo-1488900128323-21503983a07e?w=700&q=85'},
+];
+
+let activeFilter = 'all';
+let currentIndex = 0;
+let visiblePhotos = [...photos];
+
+function renderGallery() {
+  const grid = document.getElementById('galleryGrid');
+  visiblePhotos = activeFilter === 'all' ? photos : photos.filter(p => p.cat === activeFilter);
+  grid.innerHTML = visiblePhotos.map((p, i) => `
+    <div class="gal-item reveal" data-idx="${i}">
+      <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+      <div class="gal-gold-border"></div>
+      <div class="gal-overlay">
+        <div class="gal-name">${p.name}</div>
+        <div class="gal-cat">${p.cat}</div>
+      </div>
+    </div>`).join('');
+
+  // reattach reveal observer
+  document.querySelectorAll('.gal-item.reveal').forEach(el => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.05 });
+    obs.observe(el);
+  });
+
+  // lightbox click
+  document.querySelectorAll('.gal-item').forEach(item => {
+    item.addEventListener('click', () => openLightbox(+item.dataset.idx));
+  });
+}
+
+// Filters
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    renderGallery();
+  });
+});
+
+// Lightbox
+function openLightbox(idx) {
+  currentIndex = idx;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function updateLightbox() {
+  const p = visiblePhotos[currentIndex];
+  document.getElementById('lbImg').src = p.img;
+  document.getElementById('lbName').textContent = p.name;
+  document.getElementById('lbCat').textContent = p.cat;
+}
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', () => { currentIndex = (currentIndex - 1 + visiblePhotos.length) % visiblePhotos.length; updateLightbox(); });
+document.getElementById('lbNext').addEventListener('click', () => { currentIndex = (currentIndex + 1) % visiblePhotos.length; updateLightbox(); });
+document.getElementById('lightbox').addEventListener('click', e => { if(e.target === document.getElementById('lightbox')) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key === 'Escape') closeLightbox();
+  if(e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + visiblePhotos.length) % visiblePhotos.length; updateLightbox(); }
+  if(e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % visiblePhotos.length; updateLightbox(); }
+});
+
+renderGallery();
+</script>
+</body>
+</html>
