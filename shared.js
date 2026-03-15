@@ -72,7 +72,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
       <p class="footer-contact-text">
         📍 3507 Fort Meade Road<br/>
         Laurel, MD 20724<br/><br/>
-        📞 <a href="tel:+13017761234" style="color:inherit;text-decoration:none">123-456-789</a><br/><br/>
+        📞 <a href="tel:301-755-8323" style="color:inherit;text-decoration:none">301-755-8323</a><br/><br/>
         ✉️ <a href="mailto:info@karahipalace.us" style="color:inherit;text-decoration:none">info@karahipalace.us</a><br/><br/>
         🕐 All Days: 11:00 AM – 11:00 PM<br/><br/>
         🍽️ Dine-In · Carryout · Catering<br/>
