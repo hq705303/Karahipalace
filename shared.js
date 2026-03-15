@@ -58,7 +58,15 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
         <li><a href="gallery.html">Gallery</a></li>
       </ul>
     </div>
-
+    <div class="footer-col">
+      <h4>Order Online</h4>
+      <ul>
+        <li><a href="#">Order Direct (Best Price)</a></li>
+        <li><a href="#">DoorDash</a></li>
+        <li><a href="#">Uber Eats</a></li>
+        <li><a href="#">Grubhub</a></li>
+      </ul>
+    </div>
     <div class="footer-col">
       <h4>Contact</h4>
       <p class="footer-contact-text">
