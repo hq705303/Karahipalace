@@ -59,12 +59,12 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Order Online</h4>
+      <h4>Our Services</h4>
       <ul>
-        <li><a href="#">Order Direct (Best Price)</a></li>
-        <li><a href="#">DoorDash</a></li>
-        <li><a href="#">Uber Eats</a></li>
-        <li><a href="#">Grubhub</a></li>
+        <li><a href="#">Dine-In Experience</a></li>
+        <li><a href="#">Takeout Orders</a></li>
+        <li><a href="#">Catering Services</a></li>
+        <li><a href="#">Family Friendly</a></li>
       </ul>
     </div>
     <div class="footer-col">
