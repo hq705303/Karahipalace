@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="logo.png"/>
+<title>Karahi Palace | Authentic Pakistani Cuisine | Laurel, MD</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+/* ── HERO ── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=1920&q=80')center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(110deg,rgba(0,0,0,.93)0%,rgba(0,0,0,.72)50%,rgba(0,0,0,.38)100%)}
+.hero-glow{position:absolute;top:15%;right:6%;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.07)0%,transparent 70%);animation:breathe 5s ease-in-out infinite;pointer-events:none}
+.hero-ring{position:absolute;top:12%;right:4%;width:380px;height:380px;border-radius:50%;border:1px solid rgba(212,175,55,.1);animation:spin 50s linear infinite;pointer-events:none}
+.hero-ring::before{content:'';position:absolute;inset:28px;border-radius:50%;border:1px solid rgba(212,175,55,.06)}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.12);opacity:1}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.hero-content{position:relative;z-index:3;padding:0 5%;max-width:750px;animation:fadeUp 1s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(45px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{display:flex;align-items:center;gap:.9rem;margin-bottom:1.3rem}
+.hero-eyebrow-line{width:36px;height:1px;background:var(--gold);flex-shrink:0}
+.hero-eyebrow span{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:500}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.18);padding:.38rem 1rem;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;margin-bottom:1.6rem}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,7vw,5.4rem);font-weight:800;line-height:1.05;color:#fff;margin-bottom:1.4rem;letter-spacing:-.01em}
+.hero-title em{color:var(--gold);font-style:italic;display:block}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,.62);line-height:1.8;margin-bottom:2.5rem;font-weight:300;max-width:530px}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.hero-scroll{position:absolute;bottom:2.2rem;left:5%;z-index:3;display:flex;flex-direction:column;align-items:flex-start;gap:.4rem}
+.scroll-text{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Outfit',sans-serif}
+.scroll-bar{width:1px;height:52px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollDrop 2.5s ease-in-out infinite}
+@keyframes scrollDrop{0%{transform:scaleY(0);transform-origin:top;opacity:0}50%{transform:scaleY(1);opacity:1}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}
+
+/* TICKER */
+.promo-ticker{background:var(--gold);padding:.68rem 0;overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;gap:4rem;animation:ticker 28s linear infinite}
+.ticker-item{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#000;font-family:'Outfit',sans-serif}
+.ticker-sep{color:rgba(0,0,0,.35)}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ABOUT STRIP */
+.about-strip{background:var(--black);padding:5rem 5%}
+.about-strip-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1200px;margin:0 auto}
+.about-img-wrap{position:relative}
+.about-img-wrap img{width:100%;height:520px;object-fit:cover;display:block}
+.about-frame{position:absolute;top:-13px;left:-13px;right:13px;bottom:13px;border:1px solid rgba(212,175,55,.25);pointer-events:none}
+.about-badge{position:absolute;bottom:-22px;right:-22px;background:var(--gold);color:#000;padding:1.6rem;width:116px;height:116px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.about-badge strong{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;line-height:1;display:block}
+.about-badge span{font-size:.55rem;letter-spacing:.13em;text-transform:uppercase;font-family:'Outfit',sans-serif;font-weight:700;margin-top:.3rem}
+.about-text .eyebrow-center{text-align:left}
+.about-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.7rem);font-weight:800;color:#fff;margin:.5rem 0 1.3rem;line-height:1.2}
+.about-text h2 em{color:var(--gold);font-style:italic}
+.about-text p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:rgba(255,255,255,.58);line-height:1.9;margin-bottom:1rem;font-weight:300}
+.about-stats{display:flex;gap:2rem;margin:1.8rem 0;flex-wrap:wrap}
+.stat-item{text-align:center;padding-right:2rem;border-right:1px solid rgba(212,175,55,.18)}
+.stat-item:last-child{border-right:none;padding-right:0}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:800;color:var(--gold);line-height:1;display:block}
+.stat-label{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);font-family:'Outfit',sans-serif;margin-top:.3rem;display:block}
+
+/* FEATURES */
+.features-section{background:#0a0a0a;padding:5rem 5%}
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(212,175,55,.09);border:1px solid rgba(212,175,55,.09);margin-top:3rem}
+.feature-box{background:#0a0a0a;padding:2.5rem 1.8rem;text-align:center;position:relative;overflow:hidden;transition:background .3s}
+.feature-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+.feature-box:hover{background:#0f0f0f}
+.feature-box:hover::before{transform:scaleX(1)}
+.feature-icon{font-size:2rem;margin-bottom:1.1rem;display:block}
+.feature-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:.6rem}
+.feature-desc{font-size:.8rem;color:rgba(255,255,255,.42);line-height:1.65;font-family:'Outfit',sans-serif;font-weight:300}
+
+/* MENU PREVIEW */
+.menu-preview{background:var(--black);padding:5rem 5%}
+.menu-tabs-wrap{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-bottom:3rem}
+.tab-pill{background:transparent;border:1px solid rgba(212,175,55,.2);color:rgba(255,255,255,.45);padding:.45rem 1.4rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:500;transition:all .3s}
+.tab-pill.active,.tab-pill:hover{background:var(--gold);border-color:var(--gold);color:#000}
+.menu-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-bottom:2.8rem}
+.dish-card{background:var(--card-bg);border:1px solid rgba(212,175,55,.07);overflow:hidden;transition:transform .4s,box-shadow .4s,border-color .4s;display:flex;flex-direction:column}
+.dish-card:hover{transform:translateY(-6px);box-shadow:0 28px 55px rgba(0,0,0,.6);border-color:rgba(212,175,55,.28)}
+.dish-card-img-wrap{overflow:hidden;position:relative;flex-shrink:0}
+.dish-card-img{width:100%;height:210px;object-fit:cover;transition:transform .6s}
+.dish-card:hover .dish-card-img{transform:scale(1.07)}
+.dish-halal{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.78);border:1px solid var(--gold);padding:.2rem .6rem;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif}
+.dish-card-body{padding:1.3rem 1.5rem;flex:1;display:flex;flex-direction:column}
+.dish-cat{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:500;margin-bottom:.35rem}
+.dish-name{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:700;color:#fff;margin-bottom:.45rem}
+.dish-desc{font-size:.78rem;color:rgba(255,255,255,.38);line-height:1.55;font-family:'Outfit',sans-serif;font-weight:300;flex:1;margin-bottom:1rem}
+.dish-includes{font-size:.7rem;color:rgba(212,175,55,.7);font-family:'Outfit',sans-serif;font-style:italic;margin-bottom:.9rem}
+.dish-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(212,175,55,.07);padding-top:.9rem}
+.dish-price{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:800;color:var(--gold)}
+.dish-spice{display:flex;gap:3px}
+.sp{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.09)}
+.sp.on{background:#c0392b}
+
+/* SAVINGS */
+.savings-section{background:var(--gold);padding:5rem 5%}
+.savings-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:center}
+.savings-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;color:#000;margin-bottom:.9rem;line-height:1.15}
+.savings-text p{font-size:.9rem;color:rgba(0,0,0,.68);line-height:1.8;font-family:'Outfit',sans-serif;margin-bottom:1.8rem}
+.savings-numbers{display:flex;gap:2.5rem;flex-wrap:wrap}
+.save-stat strong{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:800;color:#000;display:block;line-height:1}
+.save-stat span{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.55);font-family:'Outfit',sans-serif}
+.platforms{display:flex;flex-direction:column;gap:.9rem}
+.platform-row{display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,.07);padding:1.1rem 1.4rem}
+.platform-name{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;color:#000}
+.platform-save{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#000}
+.platform-vs{font-size:.66rem;color:rgba(0,0,0,.48);font-family:'Outfit',sans-serif;margin-top:.1rem}
+
+/* REVIEWS */
+.reviews-section{background:#050505;padding:5rem 5%}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3.5rem}
+.review-card{background:#0d0d0d;border:1px solid rgba(212,175,55,.09);padding:2rem;transition:border-color .3s}
+.review-card:hover{border-color:rgba(212,175,55,.38)}
+.review-qmark{font-family:'Playfair Display',serif;font-size:4.5rem;line-height:.7;color:var(--gold);opacity:.13;margin-bottom:.9rem;display:block}
+.review-stars{display:flex;gap:2px;margin-bottom:.9rem}
+.star-icon{color:var(--gold);font-size:.88rem}
+.review-text{font-family:'Cormorant Garamond',serif;font-size:1.02rem;color:rgba(255,255,255,.62);line-height:1.75;font-weight:300;margin-bottom:1.3rem;font-style:italic}
+.reviewer{display:flex;align-items:center;gap:.75rem}
+.reviewer-av{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:#000;flex-shrink:0}
+.reviewer-name{font-size:.82rem;font-weight:600;color:#fff;font-family:'Outfit',sans-serif}
+.reviewer-src{font-size:.68rem;color:rgba(255,255,255,.32);font-family:'Outfit',sans-serif}
+
+/* LOCATIONS PREVIEW */
+.locations-section{background:var(--black);padding:5rem 5%}
+.loc-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;max-width:900px;margin:3rem auto 0}
+.loc-card{border:1px solid rgba(212,175,55,.18);overflow:hidden;transition:transform .3s,border-color .3s}
+.loc-card:hover{transform:translateY(-4px);border-color:rgba(212,175,55,.4)}
+.loc-card-top{height:190px;position:relative}
+.loc-card-top img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.65)}
+.loc-card-top::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.92))}
+.loc-card-body{background:#0d0d0d;padding:1.8rem}
+.loc-badge{display:inline-block;background:var(--gold);color:#000;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:.28rem .85rem;font-family:'Outfit',sans-serif;font-weight:700;margin-bottom:.85rem}
+.loc-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:.9rem}
+.loc-detail{display:flex;gap:.6rem;align-items:flex-start;margin-bottom:.55rem}
+.loc-detail-icon{color:var(--gold);font-size:.85rem;flex-shrink:0;margin-top:1px}
+.loc-detail-text{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.5;font-family:'Outfit',sans-serif;font-weight:300}
+.loc-detail-text strong{color:rgba(255,255,255,.82);font-weight:500;display:block}
+.loc-dir{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.1rem;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(212,175,55,.35);padding-bottom:2px;transition:border-color .3s}
+.loc-dir:hover{border-color:var(--gold)}
+
+/* CATERING CTA */
+.catering-cta{background:#0a0a0a;padding:5.5rem 5%;text-align:center;position:relative;overflow:hidden}
+.catering-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:580px;height:580px;border-radius:50%;border:1px solid rgba(212,175,55,.04);pointer-events:none}
+.catering-cta::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;height:380px;border-radius:50%;border:1px solid rgba(212,175,55,.07);pointer-events:none}
+.catering-cta-inner{position:relative;z-index:1;max-width:600px;margin:0 auto}
+.catering-cta h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.9rem);font-weight:800;color:#fff;margin-bottom:.9rem;line-height:1.2}
+.catering-cta p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(255,255,255,.52);line-height:1.75;margin-bottom:2.3rem}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1024px){
+  .about-strip-inner{grid-template-columns:1fr;gap:3.5rem}
+  .about-img-wrap img{height:400px}
+  .about-badge{bottom:-18px;right:-10px;width:100px;height:100px;padding:1.2rem}
+  .about-badge strong{font-size:1.7rem}
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+  .menu-cards{grid-template-columns:repeat(2,1fr)}
+  .savings-inner{grid-template-columns:1fr;gap:3rem}
+  .reviews-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-ring,.hero-glow{display:none}
+}
+@media(max-width:768px){
+  .hero{min-height:100svh}
+  .hero-content{padding:0 4%;max-width:100%}
+  .hero-title{font-size:clamp(2rem,8vw,3.2rem)}
+  .hero-sub{font-size:1rem;max-width:100%}
+  .hero-actions{flex-direction:column;align-items:flex-start;gap:.8rem}
+  .about-strip{padding:4rem 4%}
+  .about-badge{width:90px;height:90px;bottom:-16px;right:-8px;padding:1rem}
+  .about-badge strong{font-size:1.5rem}
+  .features-section{padding:4rem 4%}
+  .menu-preview{padding:4rem 4%}
+  .menu-cards{grid-template-columns:1fr}
+  .savings-section{padding:4rem 4%}
+  .savings-numbers{gap:1.5rem}
+  .reviews-section{padding:4rem 4%}
+  .reviews-grid{grid-template-columns:1fr}
+  .locations-section{padding:4rem 4%}
+  .loc-cards{grid-template-columns:1fr;max-width:500px}
+  .loc-grid-layout{grid-template-columns:1fr !important}
+  .catering-cta{padding:4rem 4%}
+  .catering-cta::before,.catering-cta::after{display:none}
+  .about-stats{gap:1.2rem}
+  .stat-item{padding-right:1.2rem}
+}
+@media(max-width:480px){
+  .hero-title{font-size:2rem}
+  .hero-badge{font-size:.6rem}
+  .features-grid{grid-template-columns:1fr}
+  .menu-tabs-wrap{gap:.3rem}
+  .tab-pill{padding:.4rem 1rem;font-size:.65rem}
+  .platform-row{flex-direction:column;align-items:flex-start;gap:.3rem}
+  .savings-numbers{flex-direction:column;gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:0;"><img src="logo.png" alt="Karahi Palace Logo" style="height:42px;width:42px;object-fit:contain;flex-shrink:0;margin-right:2px;">Karahi <em>Palace</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="locations.html">Locations</a></li>
+    <li><a href="catering.html">Catering</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="order.html" class="nav-order-btn">Order Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="locations.html">Locations</a></li>
+    <li><a href="catering.html">Catering</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  <li><a href="order.html" class="mobile-order">Order Now</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><span>Halal Restaurant · Laurel, MD</span></div>
+    <div class="hero-badge">🌙 100% Halal Certified · Authentic Desi Cuisine</div>
+    <h1 class="hero-title">Bold Pakistani<br/><em>Flavors from the Flame</em></h1>
+    <p class="hero-sub">Karahi Palace serves authentic Pakistani cuisine made to order — sizzling karahis, flame-grilled kabobs, and hearty daily specials. Dine-in, Carryout & Catering in Laurel, MD.</p>
+    <div class="hero-actions">
+      <!-- <a href="#" class="btn-gold">Order Online</a> -->
+      <a href="menu.html" class="btn-outline-gold">View Full Menu</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-bar"></div><span class="scroll-text">Scroll</span></div>
+</section>
+
+<!-- TICKER -->
+<div class="promo-ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 All Specialties Made to Order <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">100% Halal · Authentic Desi Cuisine <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Dine-In · Carryout · Catering <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Open Daily 11:00 AM – 11:00 PM <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">3507 Fort Meade Rd, Laurel, MD 20724 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">🔥 All Specialties Made to Order <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">100% Halal · Authentic Desi Cuisine <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Dine-In · Carryout · Catering <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Open Daily 11:00 AM – 11:00 PM <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">3507 Fort Meade Rd, Laurel, MD 20724 <span class="ticker-sep">◆</span></span>
+  </div>
+</div>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip">
+  <div class="about-strip-inner">
+    <div class="about-img-wrap reveal">
+      <img src="chickenkarahi1.jpeg" alt="Karahi Palace kitchen"/>
+      <div class="about-frame"></div>
+      <div class="about-badge"><strong>100%</strong><span>Halal Certified</span></div>
+    </div>
+    <div class="about-text reveal reveal-d1">
+      <span class="eyebrow-center">Our Heritage</span>
+      <h2>Authentic Flavors,<br/><em>Made to Order</em></h2>
+      <p>Karahi Palace is Laurel's destination for bold, authentic Pakistani cuisine. Every dish is made fresh to order using time-honored recipes, certified Halal meats, and hand-selected spices that honor the rich culinary traditions of Pakistan.</p>
+      <p>From our rich tomato-based karahis to our charcoal-grilled kabobs and hearty Nehari, every plate is crafted with passion, tradition, and love. We are proudly Halal — every day, without exception.</p>
+      <div class="about-stats">
+        <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Halal Meat</span></div>
+        <div class="stat-item"><span class="stat-num">7</span><span class="stat-label">Days Open</span></div>
+        <div class="stat-item"><span class="stat-num">∞</span><span class="stat-label">Made to Order</span></div>
+      </div>
+      <a href="about.html" class="btn-outline-gold" style="margin-top:1.5rem">Our Story →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="section-header reveal">
+    <span class="eyebrow-center">Why Choose Us</span>
+    <h2 class="section-title">The Karahi Palace Difference</h2>
+    <div class="gold-divider"><span></span><i>✦</i><span></span></div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-box reveal"><span class="feature-icon">🔥</span><div class="feature-title">Made to Order</div><div class="feature-desc">All specialties are freshly prepared upon each order. Please call ahead for large orders — quality is never rushed.</div></div>
+    <div class="feature-box reveal reveal-d1"><span class="feature-icon">🌙</span><div class="feature-title">100% Halal</div><div class="feature-desc">Every item on our menu uses certified Halal meats. We are a fully Halal, alcohol-free restaurant — every single day.</div></div>
+    <div class="feature-box reveal reveal-d2"><span class="feature-icon">👨‍🍳</span><div class="feature-title">Authentic Recipes</div><div class="feature-desc">Pakistani recipes rooted in tradition, cooked with fresh tomatoes, in-house spice blends, and years of expertise.</div></div>
+    <div class="feature-box reveal reveal-d3"><span class="feature-icon">🍽️</span><div class="feature-title">Dine-In | Carryout | Catering</div><div class="feature-desc">Enjoy a warm dine-in experience or order carryout. We also offer full catering for weddings, events and gatherings.</div></div>
+  </div>
+</section>
+
+<!-- MENU PREVIEW -->
+<section class="menu-preview">
+  <div class="section-header reveal">
+    <span class="eyebrow-center">From Our Kitchen</span>
+    <h2 class="section-title">Signature Dishes</h2>
+    <div class="gold-divider"><span></span><i>✦</i><span></span></div>
+    <p class="section-sub">Every dish cooked with fresh tomatoes, special in-house spices, and certified Halal ingredients.</p>
+  </div>
+  <div class="menu-tabs-wrap">
+    <button class="tab-pill active" data-tab="all">All</button>
+    <button class="tab-pill" data-tab="karahi">Karahi</button>
+    <button class="tab-pill" data-tab="grill">Grill</button>
+    <button class="tab-pill" data-tab="combo">Combos</button>
+    <button class="tab-pill" data-tab="special">Daily Specials</button>
+  </div>
+  <div class="menu-cards" id="homeMenuGrid"></div>
+  <div style="text-align:center"><a href="menu.html" class="btn-gold">See Full Menu</a></div>
+</section>
+
+<!-- SAVINGS -->
+<!-- <section class="savings-section">
+  <div class="savings-inner">
+    <div class="savings-text reveal">
+      <h2>Order Direct & Save More</h2>
+      <p>Skip third-party delivery apps and their hidden fees. When you order directly through us, you get the full menu experience at the best possible price.</p>
+      <div class="savings-numbers">
+        <div class="save-stat"><strong>$0</strong><span>Service Fees</span></div>
+        <div class="save-stat"><strong>35%</strong><span>Avg Savings</span></div>
+        <div class="save-stat"><strong>🏆</strong><span>Earn Rewards</span></div>
+      </div>
+      <a href="#" class="btn-black" style="margin-top:2rem">Order Now — No Fees</a>
+    </div>
+    <div class="platforms reveal reveal-d1">
+      <div class="platform-row"><div class="platform-name">Order via Our Website</div><div><div class="platform-save">Best Price</div><div class="platform-vs">✓ No fees · Earn rewards</div></div></div>
+      <div class="platform-row"><div class="platform-name">DoorDash</div><div><div class="platform-save">+15–30% Extra</div><div class="platform-vs">Service + delivery fees</div></div></div>
+      <div class="platform-row"><div class="platform-name">Uber Eats</div><div><div class="platform-save">+15–35% Extra</div><div class="platform-vs">Service + delivery fees</div></div></div>
+      <div class="platform-row"><div class="platform-name">Grubhub</div><div><div class="platform-save">+15–25% Extra</div><div class="platform-vs">Service + delivery fees</div></div></div>
+    </div>
+  </div>
+</section> -->
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="section-header reveal">
+    <span class="eyebrow-center">Guest Reviews</span>
+    <h2 class="section-title">Loved by Our Community</h2>
+    <div class="gold-divider"><span></span><i>✦</i><span></span></div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal"><span class="review-qmark">"</span><div class="review-stars">★★★★★</div><p class="review-text">The Chicken Karahi is absolutely outstanding — rich, fresh, perfectly spiced. Best Pakistani food in all of Laurel. We come here every week!</p><div class="reviewer"><div class="reviewer-av">S</div><div><div class="reviewer-name">Sarah M.</div><div class="reviewer-src">Google Reviews</div></div></div></div>
+    <div class="review-card reveal reveal-d1"><span class="review-qmark">"</span><div class="review-stars">★★★★★</div><p class="review-text">Lamb Karahi and garlic naan — absolutely incredible. The meat is so tender and the sauce is rich and flavorful. 100% will be back!</p><div class="reviewer"><div class="reviewer-av">A</div><div><div class="reviewer-name">Ahmed F.</div><div class="reviewer-src">Google Reviews</div></div></div></div>
+    <div class="review-card reveal reveal-d2"><span class="review-qmark">"</span><div class="review-stars">★★★★★</div><p class="review-text">The Lamb Chops are the best I've ever had in Maryland. Perfectly marinated, perfectly cooked. Karahi Palace is a must-visit!</p><div class="reviewer"><div class="reviewer-av">K</div><div><div class="reviewer-name">Kamran A.</div><div class="reviewer-src">Yelp</div></div></div></div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations-section">
+  <div class="section-header reveal">
+    <span class="eyebrow-center">Find Us</span>
+    <h2 class="section-title">Our Location</h2>
+    <div class="gold-divider"><span></span><i>✦</i><span></span></div>
+  </div>
+  <div class="loc-grid-layout" style="max-width:900px;margin:3rem auto 0;display:grid;grid-template-columns:1fr 1.2fr;gap:2rem;align-items:stretch">
+    <!-- Card -->
+    <div class="loc-card reveal" style="margin:0">
+      <div class="loc-card-top"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=80" alt="Karahi Palace Laurel"/></div>
+      <div class="loc-card-body">
+        <span class="loc-badge">Laurel, MD</span>
+        <div class="loc-name">Karahi Palace</div>
+        <div class="loc-detail"><span class="loc-detail-icon">📍</span><div class="loc-detail-text">3507 Fort Meade Road<br/>Laurel, MD 20724</div></div>
+        <div class="loc-detail"><span class="loc-detail-icon">🕐</span><div class="loc-detail-text"><strong>Hours</strong>All Days: 11:00 AM – 11:00 PM</div></div>
+        <div class="loc-detail"><span class="loc-detail-icon">📞</span><div class="loc-detail-text"><a href="tel:301-755-8323" style="color:inherit;text-decoration:none">301-755-8323</a></div></div>
+        <div class="loc-detail"><span class="loc-detail-icon">✉️</span><div class="loc-detail-text"><a href="mailto:info@karahipalace.us" style="color:inherit;text-decoration:none">info@karahipalace.us</a></div></div>
+        <a href="https://maps.google.com/?q=3507+Fort+Meade+Rd+Laurel+MD+20724" target="_blank" class="loc-dir">Get Directions →</a>
+      </div>
+    </div>
+    <!-- Info panel -->
+    <div class="reveal reveal-d1" style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--card-bg);border:1px solid rgba(212,175,55,.12);padding:1.6rem;flex:1">
+        <span style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;display:block;margin-bottom:1rem">🕐 Opening Hours</span>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(212,175,55,.07)">
+          <span style="font-family:'Outfit',sans-serif;font-size:.82rem;color:rgba(255,255,255,.6)">Monday – Sunday</span>
+          <span style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--gold)">11 AM – 11 PM</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(212,175,55,.07)">
+          <span style="font-family:'Outfit',sans-serif;font-size:.82rem;color:rgba(255,255,255,.6)">7 Days A Week</span>
+          <span style="font-family:'Outfit',sans-serif;font-size:.72rem;color:rgba(212,175,55,.6)">No Holidays</span>
+        </div>
+        <p style="font-size:.72rem;color:var(--text-muted);font-family:'Outfit',sans-serif;margin-top:1rem;font-style:italic;line-height:1.6">Please call ahead for specialty orders and large groups.</p>
+      </div>
+      <div style="background:var(--card-bg);border:1px solid rgba(212,175,55,.12);padding:1.6rem;flex:1">
+        <span style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:'Outfit',sans-serif;font-weight:700;display:block;margin-bottom:1rem">📞 Contact Us</span>
+        <div style="margin-bottom:.75rem">
+          <div style="font-size:.68rem;color:var(--text-muted);font-family:'Outfit',sans-serif;margin-bottom:.2rem">Phone</div>
+          <a href="tel:301-755-8323" style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:#fff;text-decoration:none">301-755-8323</a>
+        </div>
+        <div>
+          <div style="font-size:.68rem;color:var(--text-muted);font-family:'Outfit',sans-serif;margin-bottom:.2rem">Email</div>
+          <a href="mailto:info@karahipalace.us" style="font-family:'Outfit',sans-serif;font-size:.82rem;color:rgba(255,255,255,.75);text-decoration:none">info@karahipalace.us</a>
+        </div>
+      </div>
+      <div style="text-align:center"><a href="contact.html" class="btn-outline-gold" style="display:inline-block;width:100%;box-sizing:border-box;text-align:center">Contact Us →</a></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2rem"><a href="locations.html" class="btn-outline-gold">View Location Details</a></div>
+</section>
+
+<!-- CATERING CTA -->
+<section class="catering-cta">
+  <div class="catering-cta-inner reveal">
+    <span class="eyebrow-center">Events & Gatherings</span>
+    <h2>Catering for Every Occasion</h2>
+    <p>Weddings, birthdays, Eid gatherings, corporate events — let Karahi Palace bring bold, authentic Pakistani flavors to your special occasion.</p>
+    <a href="catering.html" class="btn-gold">Inquire About Catering</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+
+<script src="shared.js"></script>
+<script>
+// PDF MENU DATA — exact items from the PDF
+const homeDishes = [
+  // KARAHI SPECIALS
+  {cat:'Karahi Special',name:'Chicken Karahi',desc:'Tender chicken cooked with fresh tomatoes and special in-house spices. Served for two.',price:'$21.99',img:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&q=80',tab:'karahi',spice:2,popular:true,includes:'Served with 2 naan, salad & chutney'},
+  {cat:'Karahi Special',name:'Boneless Chicken Karahi',desc:'Boneless chicken cooked with fresh tomatoes and special in-house spices. Served for two.',price:'$23.99',img:'https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&q=80',tab:'karahi',spice:2,popular:false,includes:'Served with 2 naan, salad & chutney'},
+  {cat:'Karahi Special',name:'Chicken Kabob Karahi',desc:'Grilled chicken kabob tossed in fresh herbs, tomatoes & spices in a karahi wok.',price:'$22.99',img:'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600&q=80',tab:'karahi',spice:2,popular:false,includes:'Served with 2 naan, salad & chutney'},
+  {cat:'Karahi Special',name:'Goat Karahi',desc:'Goat pieces cooked with fresh tomatoes and special in-house spices. Served for two.',price:'$27.99',img:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80',tab:'karahi',spice:3,popular:false,includes:'Served with 2 naan, salad & chutney'},
+  {cat:'Karahi Special',name:'Lamb Karahi',desc:'Tender lamb cooked with fresh tomatoes and special in-house spices. Served for two.',price:'$27.99',img:'https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?w=600&q=80',tab:'karahi',spice:2,popular:true,includes:'Served with 2 naan, salad & chutney'},
+  {cat:'Karahi Special',name:'Paneer Karahi',desc:'Homemade cheese cooked with fresh herbs, tomatoes and spices. Served for two.',price:'$20.99',img:'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=80',tab:'karahi',spice:1,popular:false,includes:'Served with 2 naan, salad & chutney'},
+  {cat:'Karahi Special',name:'Beef Kabob Karahi',desc:'Grilled beef seekh kabob tossed in fresh herbs, tomatoes & spices. Served for two.',price:'$23.99',img:'https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&q=80',tab:'karahi',spice:2,popular:false,includes:'Served with 2 naan, salad & chutney'},
+  // GRILL
+  {cat:'From the Grill',name:'Chicken Boti Kabob',desc:'Boneless chicken marinated with fresh herbs and special in-house spices, charcoal grilled.',price:'$11.99',img:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80',tab:'grill',spice:2,popular:true,includes:'Served with 1 naan, 1 side, salad & chutney'},
+  {cat:'From the Grill',name:'Chicken Tikka With Bone',desc:'Marinated bone-in chicken grilled with fresh herbs and special in-house spices.',price:'$10.99',img:'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=80',tab:'grill',spice:2,popular:false,includes:'Served with 1 naan, 1 side, salad & chutney'},
+  {cat:'From the Grill',name:'Chicken Seekh Kabob',desc:'Ground chicken seasoned with fresh onions, herbs and spices, charcoal grilled.',price:'$10.99',img:'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600&q=80',tab:'grill',spice:2,popular:false,includes:'Served with 1 naan, 1 side, salad & chutney'},
+  {cat:'From the Grill',name:'Lamb Kabob',desc:'Ground lamb blended with special Indian herbs and spices, grilled in the tandoori oven.',price:'$12.99',img:'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80',tab:'grill',spice:2,popular:false,includes:'Served with 1 naan, 1 side, salad & chutney'},
+  {cat:'From the Grill',name:'Lamb Chops',desc:'Lamb chops meticulously marinated and slow roasted. A crowd favourite.',price:'$17.99',img:'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&q=80',tab:'grill',spice:1,popular:true,includes:'Served with 1 naan, 1 side, salad & chutney'},
+  {cat:'From the Grill',name:'Beef Seekh Kabob',desc:'Ground beef seasoned with fresh herbs and special spices, charcoal grilled.',price:'$11.99',img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80',tab:'grill',spice:2,popular:false,includes:'Served with 1 naan, 1 side, salad & chutney'},
+  {cat:'From the Grill',name:'Fried Fish',desc:'Crispy fried fish marinated in special Lahori spices. Light, flavorful and delicious.',price:'$9.99',img:'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80',tab:'grill',spice:2,popular:false,includes:'Served with 1 naan, 1 side, salad & chutney'},
+  // COMBOS
+  {cat:'Special Combo',name:'Combo 1',desc:'Seekh Kabob & Chicken Boti Kabob — the perfect pairing of two house favourites.',price:'$15.99',img:'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600&q=80',tab:'combo',spice:2,popular:false,includes:'Served with 1 naan, 1 side, salad & chutney'},
+  {cat:'Special Combo',name:'Combo 2',desc:'Seekh Kabob & Chicken Tikka With Bone — classic combo of smoky beef and charcoal chicken.',price:'$15.99',img:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80',tab:'combo',spice:2,popular:false,includes:'Served with 1 naan, 1 side, salad & chutney'},
+  {cat:'Special Combo',name:'Combo 3',desc:'Lamb Kabob & Chicken Boti Kabob — tender lamb paired with juicy boneless chicken.',price:'$19.99',img:'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80',tab:'combo',spice:2,popular:true,includes:'Served with 1 naan, 1 side, salad & chutney'},
+  {cat:'Special Combo',name:'Combo 4',desc:'Lamb Kabob & Chicken Tikka With Bone — a rich, hearty combo for true meat lovers.',price:'$19.99',img:'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&q=80',tab:'combo',spice:2,popular:false,includes:'Served with 1 naan, 1 side, salad & chutney'},
+  // DAILY SPECIALS
+  {cat:'Daily Special',name:'Kofta Curry (Monday)',desc:'Meatballs & boiled eggs in a rich, spiced curry sauce. A Desi comfort classic.',price:'$10.99',img:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80',tab:'special',spice:2,popular:false,includes:'With naan, 1 side, salad & chutney'},
+  {cat:'Daily Special',name:'Nihari (Weekend)',desc:'Tendered beef shank slow-cooked in deeply spiced Lahori-style gravy.',price:'$9.99',img:'https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&q=80',tab:'special',spice:2,popular:true,includes:'With naan, 1 side, salad & chutney'},
+  {cat:'Daily Special',name:'Chicken Biryani (Weekend)',desc:'Chicken in saffron rice, cooked with aromatic spices. (Naan excluded)',price:'$10.99',img:'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=80',tab:'special',spice:1,popular:false,includes:'No naan with biryani'},
+];
+
+function spHtml(n){return[1,2,3].map(i=>`<div class="sp${i<=n?' on':''}"></div>`).join('')}
+function renderHomeMenu(filter='all'){
+  const grid=document.getElementById('homeMenuGrid');
+  const items=filter==='all'?homeDishes:homeDishes.filter(d=>d.tab===filter);
+  grid.innerHTML=items.slice(0,6).map(d=>`
+    <div class="dish-card">
+      <div class="dish-card-img-wrap">
+        <img class="dish-card-img" src="${d.img}" alt="${d.name}" loading="lazy"/>
+        <span class="dish-halal">Halal</span>
+      </div>
+      <div class="dish-card-body">
+        <div class="dish-cat">${d.cat}</div>
+        <div class="dish-name">${d.name}</div>
+        <div class="dish-desc">${d.desc}</div>
+        <div class="dish-includes">✓ ${d.includes}</div>
+        <div class="dish-footer">
+          <span class="dish-price">${d.price}</span>
+          <div class="dish-spice">${spHtml(d.spice)}</div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+renderHomeMenu();
+document.querySelectorAll('.tab-pill').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-pill').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderHomeMenu(btn.dataset.tab);
+  });
+});
+</script>
+</body>
+</html>
